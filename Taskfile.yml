@@ -1,0 +1,42 @@
+version: "3"
+
+vars:
+  PYTHON_PROJECT_DIR: vrchat-poker-gto
+
+tasks:
+  setup:
+    desc: Install dependencies using uv
+    dir: "{{.PYTHON_PROJECT_DIR}}"
+    cmds:
+      - uv sync
+
+  lint:
+    desc: Run ruff linter
+    dir: "{{.PYTHON_PROJECT_DIR}}"
+    cmds:
+      - uv run ruff check .
+
+  format:
+    desc: Run ruff formatter
+    dir: "{{.PYTHON_PROJECT_DIR}}"
+    cmds:
+      - uv run ruff format .
+
+  test:
+    desc: Run tests using pytest
+    dir: "{{.PYTHON_PROJECT_DIR}}"
+    cmds:
+      - uv run pytest
+
+  run:
+    desc: Run the solver wrapper MVP
+    dir: "{{.PYTHON_PROJECT_DIR}}"
+    cmds:
+      - uv run python solver_wrapper.py
+
+  clean:
+    desc: Clean up temporary files
+    dir: "{{.PYTHON_PROJECT_DIR}}"
+    cmds:
+      - rm -rf .venv
+      - find . -type d -name "__pycache__" -exec rm -rf {} +
