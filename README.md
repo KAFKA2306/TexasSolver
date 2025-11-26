@@ -5,71 +5,72 @@
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/bupticybee/TexasSolver/blob/console/TexasSolverTechDemo.ipynb)
 [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/TexasSolver/TexasSolver)
 
-README [English](README.md) | [中文](README.zh-CN.md)
+README [日本語](README.md) | [中文](README.zh-CN.md)
 
-## Introduction 
-A open sourced, extremely efficient Texas Hold'em and short deck solver. See this [Introduction video](https://youtu.be/IsSJNz7sRmQ) for more. Supports Windows,MacOs and Linux.
+## はじめに
+
+オープンソースで極めて効率的なテキサスホールデムおよびショートデッキソルバーです。詳細は[紹介動画](https://youtu.be/IsSJNz7sRmQ)をご覧ください。Windows、MacOS、Linuxに対応しています。
 
 ![](imgs/solver_example.gif)
 
-Features:
+特徴:
 
-- In a tree with 1~2bets + allin, it's speed exceeds piosolver on flop
-- Support Mac, Linux and Windows
-- Support texas holdem and shortdeck
-- Support cross language calls
-- Result aliged with piosolver
-- Support dump strategy to json file
-- It's the c++ version of [TexasHoldemSolverJava](https://github.com/bupticybee/TexasHoldemSolverJava) with a ton of optimization, it's 5x faster than the java version and takes less than 1/3 memory.
+- 1～2ベット+オールインのツリーにおいて、フロップでの速度がpiosolverを上回ります
+- Mac、Linux、Windowsに対応
+- テキサスホールデムとショートデッキに対応
+- 言語間呼び出しに対応
+- piosolverと一致した結果
+- 戦略をJSONファイルにダンプする機能に対応
+- [TexasHoldemSolverJava](https://github.com/bupticybee/TexasHoldemSolverJava)のC++版であり、大量の最適化により、Javaバージョンの5倍の速度と1/3未満のメモリ使用量を実現しています。
 
-Feel free to mess with a toy solver [in google colab](https://colab.research.google.com/github/bupticybee/TexasSolver/blob/console/TexasSolverTechDemo.ipynb)
+[Google Colab](https://colab.research.google.com/github/bupticybee/TexasSolver/blob/console/TexasSolverTechDemo.ipynb)でソルバーのデモをお試しいただけます。
 
 
-## Install
+## インストール
 
-Download package according to your OS in [release package](https://github.com/bupticybee/TexasSolver/releases), unzip it, and install is done. It's that simple.
+[リリースパッケージ](https://github.com/bupticybee/TexasSolver/releases)からお使いのOSに応じたパッケージをダウンロードし、解凍すればインストール完了です。とても簡単です。
 
-## GUI version Usage
+## GUI版の使用方法
 
-After install the solver, double click the application binary (TexasSolverGui.exe in windows or TexasSolverGui.app in MacOS) to run TexasSolver.
+ソルバーをインストールした後、アプリケーションバイナリ（Windowsでは`TexasSolverGui.exe`、MacOSでは`TexasSolverGui.app`）をダブルクリックして、TexasSolverを実行してください。
 
-## Console version Usage
+## コンソール版の使用方法
 
-Please check [console version document](https://github.com/bupticybee/TexasSolver/tree/console#usage) for more.
+詳細は[コンソール版ドキュメント](https://github.com/bupticybee/TexasSolver/tree/console#usage)をご確認ください。
 
-## Speed benchmark with piosolver
+## piosolverとの速度ベンチマーク
 
-Piosolver and my TexasSolver(console version) run use the same settings (spr=10,flop game) and their result are aligned.
+Piosolverと本TexasSolver（コンソール版）を同じ設定（spr=10、フロップゲーム）で実行し、結果が一致しています。
 
-|                                | Input config                                              | log                                                          | thread number | memory usage | accuracy | converge time |
+|                                | 入力設定                                              | ログ                                                          | スレッド数 | メモリ使用量 | 精度 | 収束時間 |
 | ------------------------------ | --------------------------------------------------------- | ------------------------------------------------------------ | ------------- | ------------ | -------- | ------------- |
 | piosolver 1.0                  | [config_piosolver](benchmark/benchmark_piosolver.txt)     | [log_piosolver](benchmark/benchmark_outputs/piosolver_log.txt) | 6             | 492Mb        | 0.29%    | 242s          |
-| TexasSolver 0.1.0 (Our solver) | [config_texassolver](benchmark/benchmark_texassolver.txt) | [log_texassolver](benchmark/benchmark_outputs/texassolver_log.txt) | 6             | 1600Mb       | 0.275%   | 172s          |
+| TexasSolver 0.1.0（本ソルバー） | [config_texassolver](benchmark/benchmark_texassolver.txt) | [log_texassolver](benchmark/benchmark_outputs/texassolver_log.txt) | 6             | 1600Mb       | 0.275%   | 172s          |
 
-The compare image of their results is  [here](benchmark/benchmark_outputs/result_compair.png). As you can see their result are very close.
+両者の結果の比較画像は[こちら](benchmark/benchmark_outputs/result_compair.png)です。ご覧の通り、結果は非常に近いものとなっています。
 
-# License
+# ライセンス
 
 [GNU AGPL v3](https://www.gnu.org/licenses/agpl-3.0.en.html)
 
-This software is licensed to person/business here: 
- [licensed_list](licensed_list.txt)
+本ソフトウェアは以下の個人/企業にライセンスされています: 
+[licensed_list](licensed_list.txt)
 
-# Email
+# メール
 
 icybee@yeah.net
 
-# Q & As
+# よくある質問
 
-1. Q: Is the solver really free?
-   - A: Yes, for personal users, the solver is completely opensourced and free.
+1. 質問: このソルバーは本当に無料ですか？
+   - 回答: はい、個人ユーザーに対しては、このソルバーは完全にオープンソースで無料です。
 
-2. Q: Can I upload it to other websites or forums? Can I share it with my friend?
-   - A: No, you can only put the link of this project to other website, not the binary, this project is under AGPL-V3 license, and these kind of actions violates this license.
+2. 質問: 他のウェブサイトやフォーラムにアップロードできますか？友人と共有できますか？
+   - 回答: いいえ、このプロジェクトへのリンクのみを他のウェブサイトに掲載できます。バイナリファイルの直接共有は禁止されています。本プロジェクトはAGPL-V3ライセンスの下にあり、これらの行為はライセンスに違反します。
 
-3. Q: Can I integrate it to my software?
-   - A: If you integrate the release package (binary) into your software, Yes, you can do that. If you want to integrate the code of the solver into your software or provide service through internet, then you need to contact me for a commercial license, which is also the main profit-making method of this project.
+3. 質問: 自分のソフトウェアに統合できますか？
+   - 回答: リリースパッケージ（バイナリ）を統合する場合は、可能です。ソルバーのコードを統合したい、またはインターネット経由でサービスを提供したい場合は、商用ライセンスについて私に連絡する必要があります。これは本プロジェクトの主な収益化方法でもあります。
 
-4. Q: What framework do you use to write the ui?
-   - A: I use QT 5.1.0 (opensourced edition) to build the GUI version. For the console version, I use Mingw + CMake.
+4. 質問: UIの作成にどのフレームワークを使用していますか？
+   - 回答: GUI版の構築にはQT 5.1.0（オープンソース版）を使用しています。コンソール版にはMingw + CMakeを使用しています。
 

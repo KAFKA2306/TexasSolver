@@ -1,70 +1,70 @@
-# 德州扑克/短牌 solver
+# テキサスホールデム/ショートデッキ ソルバー
 
 [![release](https://img.shields.io/github/v/release/bupticybee/TexasSolver?style=flat-square)](https://github.com/bupticybee/TexasSolver/releases)
 [![license](https://img.shields.io/github/license/bupticybee/TexasSolver?style=flat-square)](https://github.com/bupticybee/TexasSolver/blob/master/LICENSE)
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/bupticybee/TexasSolver/blob/console/TexasSolverTechDemo.ipynb)
 [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/TexasSolver/TexasSolver)
 
-README [English](README.md) | [中文](README.zh-CN.md)
+README [日本語](README.md) | [中文](README.zh-CN.md)
 
-## 项目介绍
+## プロジェクト概要
 
-一个开源的，极其高效的德州扑克和短牌solver, 看看这个 [介绍视频](https://www.bilibili.com/video/BV1sr4y1C7KE) 了解更多。支持Windows，MacOs和Linux。
+オープンソースで極めて効率的なテキサスホールデムおよびショートデッキのソルバーです。詳細は[紹介動画](https://www.bilibili.com/video/BV1sr4y1C7KE)をご覧ください。Windows、MacOS、Linuxに対応しています。
 
 ![](imgs/solver_example.gif)
 
-Features:
-- 对于1~2bet+allin的游戏树求解速度超过piosolver 
-- 支持 Mac, Linux and Windows平台
-- 支持德州扑克和短牌
-- 支持跨语言调用，支持console调用
-- 结果和piosolver对齐
-- 支持将最优策略保存为json文件
-- 是 [TexasHoldemSolverJava](https://github.com/bupticybee/TexasHoldemSolverJava) 的c++版本,速度是前者的5倍以上，而内存使用仅有前者的1/3不到
+特徴:
+- 1～2ベット+オールインのゲームツリーに対する求解速度がpiosolverを上回ります
+- Mac、Linux、Windowsプラットフォームに対応
+- テキサスホールデムとショートデッキに対応
+- 言語間呼び出しに対応し、コンソール呼び出しにも対応
+- piosolverと一致した結果
+- 最適戦略をJSONファイルとして保存する機能に対応
+- [TexasHoldemSolverJava](https://github.com/bupticybee/TexasHoldemSolverJava)のC++版であり、速度は前者の5倍以上、メモリ使用量は前者の1/3未満です
 
-你可以通过 [google colab demo](https://colab.research.google.com/github/bupticybee/TexasSolver/blob/console/TexasSolverTechDemo.ipynb) 体验这个solver。
+[Google Colabデモ](https://colab.research.google.com/github/bupticybee/TexasSolver/blob/console/TexasSolverTechDemo.ipynb)でこのソルバーを体験できます。
 
-## 安装
+## インストール
 
-根据你的操作系统型号从  [release package](https://github.com/bupticybee/TexasSolver/releases) 下载相应的包, 解压缩, 安装就完成了。就是这么简单。
+お使いのOSに応じて[リリースパッケージ](https://github.com/bupticybee/TexasSolver/releases)から該当するパッケージをダウンロードし、解凍すればインストール完了です。とても簡単です。
 
-## 图形界面版本使用
+## グラフィカルインターフェース版の使用方法
 
-在安装solver之后，双击应用的图标 (在windows下，双击TexasSolverGui.exe；在mac下，双击 TexasSolverGui.app) 来运行TexasSolver。
+ソルバーをインストールした後、アプリケーションのアイコンをダブルクリック（Windowsでは`TexasSolverGui.exe`、Macでは`TexasSolverGui.app`）して、TexasSolverを実行してください。
 
-## 命令行版本使用
+## コマンドライン版の使用方法
 
-请查看 [命令行版本文档](https://github.com/bupticybee/TexasSolver/tree/console#usage) 获取更多信息.
+詳細は[コマンドライン版ドキュメント](https://github.com/bupticybee/TexasSolver/tree/console#usage)をご確認ください。
 
-## 和piosolver的速度对比
+## piosolverとの速度比較
 
-两者均在一个spr=10的flop局面上进行计算，结果对齐。
+両者ともspr=10のフロップ局面で計算を行い、結果が一致しています。
 
-|                   | 输入配置                                            | 运行日志                                                       | 线程数 | 内存 | 结束精度 | 运行时间 |
+|                   | 入力設定                                            | 実行ログ                                                       | スレッド数 | メモリ | 終了精度 | 実行時間 |
 | ----------------- | ------------------------------------------------------- | ------------------------------------------------------------------ | ------ | ------ | -------- | -------- |
 | piosolver 1.0     | [config_piosolver](benchmark/benchmark_piosolver.txt)   | [log_piosolver](benchmark/benchmark_outputs/piosolver_log.txt)     | 6      | 492Mb  | 0.29%    | 242s     |
-| TexasSolver 0.1.0 (Our solver) | [config_texassolver](benchmark/benchmark_texassolver.txt) | [log_texassolver](benchmark/benchmark_outputs/texassolver_log.txt) | 6      | 1600Mb | 0.275%   | 175s     |
+| TexasSolver 0.1.0（本ソルバー） | [config_texassolver](benchmark/benchmark_texassolver.txt) | [log_texassolver](benchmark/benchmark_outputs/texassolver_log.txt) | 6      | 1600Mb | 0.275%   | 175s     |
 
-对齐结果的图片见 [result_compair](benchmark/benchmark_outputs/result_compair.png). 如你所见，两者的结果非常接近。
+結果の一致を示す画像は[result_compair](benchmark/benchmark_outputs/result_compair.png)をご覧ください。ご覧の通り、両者の結果は非常に近いものとなっています。
 
-# License
+# ライセンス
 
 [GNU AGPL v3](https://www.gnu.org/licenses/agpl-3.0.en.html)
 
-# Email
+# メール
 
 icybee@yeah.net
 
-# 常见问题
+# よくある質問
 
-1. 问: 这个Solver真的是完全免费的么?
-   - 答: 是的, 对于个人用户来说，这个solver是完全开源并且免费的。
+1. 質問: このソルバーは本当に完全無料ですか？
+   - 回答: はい、個人ユーザーに対しては、このソルバーは完全にオープンソースで無料です。
 
-2. 问: 我可以把这个Solver上传到其他网站/微信qq群或者分享給我的朋友么？
-   - A: 不可以，你只能将项目的地址进行分享，不能直接分享项目的二进制文件。这个项目的License是 AGPL-V3, 直接分享/上传软件二进制文件直接违反了开源协议。
+2. 質問: このソルバーを他のウェブサイト/WeChatやQQグループにアップロードしたり、友人と共有したりできますか？
+   - 回答: いいえ、プロジェクトのアドレスのみを共有できます。プロジェクトのバイナリファイルを直接共有することはできません。本プロジェクトのライセンスはAGPL-V3であり、ソフトウェアのバイナリファイルを直接共有/アップロードすることはオープンソースライセンスに直接違反します。
 
-3. 问: 我可以将这个solver整合进我自己的商用软件么?
-   - A: 如果你只是将软件的二进制文件整合进你的软件，那么可以，但是你仍然不可以分发TexasSolver的二进制文件。如果你想要将TexasSolver的源码整合进你的商用软件中，或者你的软件对外提供基于互联网的服务，那么你需要联系我付费取得一张商用License，这也是这个项目主要的盈利方式。
+3. 質問: このソルバーを自分の商用ソフトウェアに統合できますか？
+   - 回答: ソフトウェアのバイナリファイルのみを統合する場合は可能ですが、TexasSolverのバイナリファイルを配布することはできません。TexasSolverのソースコードを商用ソフトウェアに統合したい場合、またはソフトウェアがインターネットベースのサービスを提供する場合は、私に連絡して有料の商用ライセンスを取得する必要があります。これは本プロジェクトの主な収益化方法でもあります。
 
-4. 问: 你撰写TexasSolver使用了什么框架？
-   - A: 我使用了 QT 5.1.0 (开源版本) 构建了图形界面版本. 对于命令行版本，我试用了 Mingw + CMake.
+4. 質問: TexasSolverの作成にどのフレームワークを使用しましたか？
+   - 回答: グラフィカルインターフェース版の構築にはQT 5.1.0（オープンソース版）を使用しました。コマンドライン版にはMingw + CMakeを使用しました。

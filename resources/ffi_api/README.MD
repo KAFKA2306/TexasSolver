@@ -1,36 +1,36 @@
-## Usage
+## 使用方法
 
 ### C FFI API
 
-You can easily call the library using C FFI compatible languages like Rust, Python, Dart, etc.
+Rust、Python、Dartなどのc FFI互換言語を使用してこのライブラリを簡単に呼び出すことができます。
 
-For example, if you are using Python on Windows, an easy way to load the library and call the api function is as follows:
+例えば、Windows上でPythonを使用している場合、ライブラリをロードしてAPI関数を呼び出す簡単な方法は以下の通りです:
 
 ```python
 from ctypes import *
-api_library = CDLL('api.dll') # python script in same directory as library
+api_library = CDLL('api.dll') # pythonスクリプトをライブラリと同じディレクトリに配置
 
-api_library.api(b"resources/text/commandline_sample_input.txt", b"./resources", b"holdem") # should just work
-# verify that it generates a file with the solution
+api_library.api(b"resources/text/commandline_sample_input.txt", b"./resources", b"holdem") # これで動作します
+# ソリューションファイルが生成されることを確認してください
 ```
 
-Linux users should use this command:
+Linuxユーザーは以下のコマンドを使用してください:
 
 ```python
 api_library = CDLL('api.so') 
 ```
 
-And MacOs:
+MacOSの場合:
 
 ```python
 api_library = CDLL('api.dylib') 
 ```
 
-PLEASE, this is just an example. Use the python bindings provided by Texas Solver as it has more features and flexibility.
+注意: これは単なる例です。より多くの機能と柔軟性を持つTexas Solverが提供するPythonバインディングを使用してください。
 
-After the solving process is done, a ```output_result.json``` file should be generated. It contains the optimal strategy that was calculated.
+求解プロセスが完了すると、`output_result.json`ファイルが生成されます。これには計算された最適戦略が含まれています。
 
-The input file, above mentioned ```resources/text/commandline_sample_input.txt``` contains parameters controls the tree building and solving process. A typical such file look like this:
+上記で言及した入力ファイル`resources/text/commandline_sample_input.txt`には、ツリー構築と求解プロセスを制御するパラメータが含まれています。典型的なファイルは以下のようになります:
 
 ```text
 set_pot 50
@@ -69,8 +69,8 @@ set_dump_rounds 2
 dump_result output_result.json
 ```
 
-Modify the file to control the game tree details and parallelism, etc. By default the input file contains a flop situation where game tree is constructed using 1bet/raise+allin in flop and turn, using 2bet/raise+allin in river.
+ファイルを修正して、ゲームツリーの詳細や並列処理などを制御してください。デフォルトでは、入力ファイルにはフロップとターンで1ベット/レイズ+オールイン、リバーで2ベット/レイズ+オールインを使用してゲームツリーを構築するフロップ状況が含まれています。
 
-Check out full python implementation in the 'resources/ffi_api' folder, as it contains a more detailed explanation
+より詳細な説明については、'resources/ffi_api'フォルダ内の完全なPython実装をご確認ください。
 
-If you wish to see other language implementations then ... (create a github issue?)
+他の言語の実装をご希望の場合は...（GitHubのissueを作成してください？）
