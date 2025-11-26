@@ -29,10 +29,10 @@ tasks:
       - uv run pytest
 
   run:
-    desc: Run the solver wrapper MVP
+    desc: Run the VRChat Poker GTO System (pamiq-core)
     dir: "{{.PYTHON_PROJECT_DIR}}"
     cmds:
-      - uv run python solver_wrapper.py
+      - uv run python -m src.poker_gto.launch
 
   clean:
     desc: Clean up temporary files
